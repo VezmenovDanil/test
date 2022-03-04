@@ -1,0 +1,148 @@
+<div class="main-wrapper">
+  <div class="filter-block">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [formGroup]="dataRangeForm" [rangePicker]="picker">
+        <input
+          matStartDate
+          formControlName="start"
+          (dateChange)="addEvent($event)"
+          placeholder="Start date"
+        />
+        <input
+          matEndDate
+          formControlName="end"
+          (dateChange)="addEvent($event)"
+          placeholder="End date"
+        />
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+      <mat-error *ngIf="dataRangeForm.controls?.['start']"
+        >Invalid start value
+      </mat-error>
+      <mat-error *ngIf="dataRangeForm.controls?.['end']"
+        >Invalid end value
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="table-area">
+    <div class="mat-elevation-z8">
+      <table
+        mat-table
+        matSort
+        (matSortChange)="onSortChange($event)"
+        [matSortActive]="sortState.active"
+        [matSortDirection]="sortState.direction"
+        [dataSource]="dataSource"
+      >
+        <ng-container matColumnDef="number">
+          <th mat-header-cell *matHeaderCellDef>No.</th>
+          <td (click)="openDialog(element)" mat-cell *matCellDef="let element">
+            {{ element.number }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="capacity">
+          <th mat-header-cell *matHeaderCellDef>Capacity</th>
+          <td (click)="openDialog(element)" mat-cell *matCellDef="let element">
+            {{ element.capacity }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <th mat-sort-header="price" mat-header-cell *matHeaderCellDef>
+            Price
+          </th>
+          <td (click)="openDialog(element)" mat-cell *matCellDef="let element">
+            {{ element.price }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator
+        #matPaginator
+        [pageSizeOptions]="[5, 10, 15]"
+        showFirstLastButtons
+        aria-label="Select page of periodic elements"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>
+<div class="main-wrapper">
+  <div class="filter-block">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [formGroup]="dataRangeForm" [rangePicker]="picker">
+        <input
+          matStartDate
+          formControlName="start"
+          (dateChange)="addEvent($event)"
+          placeholder="Start date"
+        />
+        <input
+          matEndDate
+          formControlName="end"
+          (dateChange)="addEvent($event)"
+          placeholder="End date"
+        />
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+      <mat-error *ngIf="dataRangeForm.controls?.['start']"
+        >Invalid start value
+      </mat-error>
+      <mat-error *ngIf="dataRangeForm.controls?.['end']"
+        >Invalid end value
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="table-area">
+    <div class="mat-elevation-z8">
+      <table
+        mat-table
+        matSort
+        (matSortChange)="onSortChange($event)"
+        [matSortActive]="sortState.active"
+        [matSortDirection]="sortState.direction"
+        [dataSource]="dataSource"
+      >
+        <ng-container matColumnDef="number">
+          <th mat-header-cell *matHeaderCellDef>No.</th>
+          <td (click)="openDialog(element)" mat-cell *matCellDef="let element">
+            {{ element.number }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="capacity">
+          <th mat-header-cell *matHeaderCellDef>Capacity</th>
+          <td (click)="openDialog(element)" mat-cell *matCellDef="let element">
+            {{ element.capacity }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <th mat-sort-header="price" mat-header-cell *matHeaderCellDef>
+            Price
+          </th>
+          <td (click)="openDialog(element)" mat-cell *matCellDef="let element">
+            {{ element.price }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator
+        #matPaginator
+        [pageSizeOptions]="[5, 10, 15]"
+        showFirstLastButtons
+        aria-label="Select page of periodic elements"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>
